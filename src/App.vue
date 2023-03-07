@@ -7,7 +7,6 @@ const store = VtunifyStore();
 const { flag } = storeToRefs(store);
 </script>
 <template>
-  <Landing v-if="flag" />
-  <MainPage v-else />
+  <router-view />
 </template>
 <style></style>
