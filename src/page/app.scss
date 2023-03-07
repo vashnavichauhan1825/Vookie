@@ -1,0 +1,99 @@
+body {
+  --cta-clr: #8daca1;
+  --primary-clr: #406e5e;
+  --sec-clr: #e9ebd4;
+  --txt-clr: #f3e0c0;
+  --bg-clr: #d6925e;
+  background-color: var(--sec-clr);
+  font-family: "Gopher Display";
+  font-family: "Catamaran", sans-serif;
+}
+
+.flex-row {
+  display: flex;
+  padding: 0rem 2rem;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 8rem;
+    text-align: center;
+    margin: 0;
+    color: var(--primary-clr);
+
+    font-weight: 900;
+
+    font-weight: bold;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .heading-cont {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    justify-content: center;
+  }
+  p {
+    font-size: 2rem;
+    margin: 0;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+    color: var(--bg-clr);
+  }
+  .btn-connect {
+    bottom: 30%;
+    cursor: pointer;
+    font-size: 3rem;
+    left: 20%;
+    margin: 0;
+    color: var(--sec-clr);
+  }
+}
+.connect-cont {
+  &:hover .path {
+    stroke-dasharray: 500;
+    stroke-dashoffset: 0;
+    animation: dash 1s linear;
+  }
+
+  @keyframes dash {
+    from {
+      stroke-dashoffset: 500;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+.path:hover {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 0;
+  animation: dash 1s linear;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 500;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.blob-cont {
+  width: 60%;
+  height: 30%;
+}
+
+.full-sx {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+svg {
+  width: 18rem;
+  height: 10rem;
+}
