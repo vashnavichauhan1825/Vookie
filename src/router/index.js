@@ -5,10 +5,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", component: () => import("../page/Landing.vue") },
-    { path: "/Main", component: () => import("../page/MainPage.vue") },
+    { path: "/Signup", component: () => import("../page/SignUp.vue") },
     { path: "/Login", component: () => import("../page/Login.vue") },
     {
-      path: "/wow",
+      path: "/Journal",
       component: () => import("../page/Journal.vue"),
       meta: {
         requiresAuth: true,

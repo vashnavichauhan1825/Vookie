@@ -29,7 +29,7 @@ onMounted(() => {
   });
   anime({
     targets: blobRef.value,
-    translateX: -250,
+    translateX: -350,
     duration: 5000,
   });
   anime({
@@ -66,7 +66,7 @@ const nextHandler = () => {
     <div class="heading-cont">
       <h1 class="ml3">Vookie</h1>
       <p>Everyone has a chapter they don't read out loud...</p>
-      <router-link to="/Main">
+      <router-link to="/Signup">
         <div @click="connectHandler" class="relative connect-cont">
           <h2 class="ab btn-connect">connect</h2>
           <svg
@@ -115,7 +115,7 @@ const nextHandler = () => {
 .music-img {
   position: absolute;
 
-  height: 94vh;
+  height: 80vh;
   right: 1%;
 
   bottom: 0%;

@@ -1,29 +1,102 @@
 .main-wrapper {
-  width: 100%;
+  background-image: url("../assets/bg.png");
   display: flex;
+  border: 1px solid var(--txt-clr);
   gap: 20px;
-  max-height: 100vh;
-  align-items: end;
+  // max-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  u {
+    color: var(--primary-clr);
+    cursor: pointer;
+  }
   .signup-img {
     width: 50%;
-    max-height: 100vh;
+    // max-height: 100vh;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    p {
+      color: var(--dark-txt-clr);
+      font-size: 1.2rem;
+      margin: 0;
+    }
     img {
       width: 100%;
       height: 100%;
     }
   }
   .signup-box {
-    width: 50%;
-    max-height: 100vh;
-    div {
-      z-index: 1;
-      position: absolute;
+    // width: 100%;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    align-items: center;
+    padding: 1rem 8rem;
+    display: flex;
+    flex-direction: column;
+
+    button {
+      background-color: var(--dark-txt-clr);
+      border: none;
+      padding: 0.5rem 1.5rem;
+      max-width: 300px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      color: var(--sec-clr);
+      &:hover {
+        opacity: 0.8;
+      }
     }
-    img {
-      position: absolute;
-      width: 34%;
-      height: 85%;
-      top: 10%;
+    .google-btn {
+      background-color: var(--sec-clr);
+      color: var(--dark-txt-clr);
+      display: flex;
+      border: 1px solid var(--dark-txt-clr);
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    h1 {
+      color: var(--primary-clr);
+
+      margin: 0;
+    }
+    p {
+      color: var(--dark-txt-clr);
+      font-weight: 600;
+      word-spacing: 1px;
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      gap: 2rem;
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    label {
+      font-size: 1.5rem;
+      color: var(--primary-clr);
+    }
+    input {
+      border: 1px solid var(--bg-clr);
+      background: var(--txt-clr);
+      color: var(--dark-txt-clr);
+      border-radius: 5px;
+      max-width: 300px;
+      padding: 0.5rem;
+      &:focus {
+        outline: none;
+      }
     }
   }
 }

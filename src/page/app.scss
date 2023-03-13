@@ -4,9 +4,13 @@ body {
   --sec-clr: #e9ebd4;
   --txt-clr: #f3e0c0;
   --bg-clr: #d6925e;
+  --tag-clr: rgb(243, 201, 129);
+  --dark-txt-clr: #874e22;
   background-color: var(--sec-clr);
   font-family: "Gopher Display";
   font-family: "Catamaran", sans-serif;
+  margin: 0;
+  height: 100%;
 }
 
 .flex-row {
@@ -89,7 +93,7 @@ body {
 
 .full-sx {
   height: 100%;
-  width: 100%;
+  width: 85%;
   object-fit: contain;
 }
 

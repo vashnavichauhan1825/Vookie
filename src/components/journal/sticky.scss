@@ -1,0 +1,130 @@
+$purple-color: rgb(211, 182, 250);
+$yellow-clr: rgb(233, 233, 143);
+$pink-clr: rgb(249, 189, 199);
+$green-clr: rgb(164, 244, 164);
+.bg-green {
+  background-color: $green-clr;
+}
+.bg-yellow {
+  background-color: $yellow-clr;
+}
+.bg-pink {
+  background-color: $pink-clr;
+}
+.bg-purple {
+  background-color: $purple-color;
+}
+.add-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: var(--dark-txt-clr);
+  color: var(--txt-clr);
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.hero-sticky {
+  background-color: #e9ebd4;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%238daca1' fill-opacity='0.52'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.flex-col {
+  display: flex;
+  padding: 0rem 2rem;
+  flex-direction: column;
+  h1 {
+    font-size: 2.5rem;
+    color: var(--primary-clr);
+    text-align: start;
+  }
+}
+.flex-row {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: start;
+  gap: 20px;
+  .detail-cont {
+    display: flex;
+    justify-content: space-between;
+    p {
+      font-size: 1rem;
+    }
+  }
+  .color-wrapper {
+    display: flex;
+    gap: 10px;
+
+    .color-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid var(--cta-clr);
+    }
+  }
+
+  textarea {
+    resize: none;
+    width: 200px;
+
+    height: 200px;
+    padding: 0.5rem;
+    border: none;
+    color: var(--dark-txt-clr);
+    font-size: 1rem;
+    border-bottom: 2px solid var(--dark-txt-clr);
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+.sticky-empty {
+  width: 100%;
+  font-size: 1.5rem;
+  color: var(--primary-clr);
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+.sticky-wrapper {
+  padding: 1rem;
+  .sticky-cont {
+    display: flex;
+    margin-top: 40px;
+    gap: 20px;
+    flex-wrap: wrap;
+    .sticky-note {
+      padding: 0.5rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      color: var(--dark-txt-clr);
+      justify-content: space-between;
+      width: 250px;
+      height: 300px;
+      overflow-wrap: break-word;
+      .date {
+        color: var(--primary-clr);
+      }
+    }
+  }
+  .remove-btn {
+    position: absolute;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--cta-clr);
+    font-size: 2rem;
+    top: 0%;
+    right: 2%;
+  }
+}
