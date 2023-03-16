@@ -4,9 +4,14 @@ export const VtunifyStore = defineStore("VtunifyId", {
   state: () => ({
     flag: true,
     token: null,
+    uid: null,
     trackList: [],
   }),
   actions: {
+    setUid(uid) {
+      this.uid = uid;
+      localStorage.setItem("uid", uid);
+    },
     flagHandler() {
       this.flag = !this.flag;
     },

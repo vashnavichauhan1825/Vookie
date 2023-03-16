@@ -51,6 +51,9 @@ onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       loggedIn.value = true;
+      const uid = user.uid;
+      store.setUid(uid);
+      console.log(uid);
     } else {
       loggedIn.value = false;
     }

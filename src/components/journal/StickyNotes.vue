@@ -1,7 +1,41 @@
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, onMounted } from "vue";
+import {
+  collection,
+  getDocs,
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
+import { db } from "../../main";
 const colorRef = ref("");
+const notesRef = ref("");
 const limitVal = reactive({ pressed: 0, remaining: 200 });
+const uidRef = ref(localStorage.getItem("uid"));
+const docRef = doc(db, "books", uidRef.value);
+onMounted(async () => {
+  const docRef = doc(db, "books", uidRef.value);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    if (docSnap.data().notes) {
+      list.value = docSnap.data().notes;
+    } else {
+      await updateDoc(docRef, {
+        notesRef: list.value,
+      });
+    }
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+    await setDoc(docRef, {});
+    await updateDoc(docRef, {
+      notes: list.value,
+    });
+  }
+});
 const list = ref([
   {
     note: "Life is either a daring adventure or nothing at all",
@@ -33,8 +67,7 @@ const inputHandler = () => {
   limitVal.pressed = inputVal.value.length;
 };
 
-const addItemHandler = () => {
-  console.log(inputVal.value.length);
+const addItemHandler = async () => {
   if (inputVal.value.length > 0) {
     list.value.push({
       note: inputVal.value,
@@ -43,13 +76,19 @@ const addItemHandler = () => {
       } ${new Date().getFullYear()}`,
       color: colorRef.value,
     });
+    await updateDoc(docRef, {
+      notes: list.value,
+    });
     inputVal.value = " ";
   } else {
     alert("empty field");
   }
 };
-const removeItemHandler = (i) => {
+const removeItemHandler = async (i) => {
   list.value.splice(i, 1);
+  await updateDoc(docRef, {
+    notes: list.value,
+  });
 };
 </script>
 <template>

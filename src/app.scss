@@ -7,10 +7,14 @@
 nav {
   display: flex;
   justify-content: center;
+  position: fixed;
+  width: 100%;
   padding: 1rem 2rem 0rem 2rem;
   gap: 40px;
   min-height: 10vh;
   font-size: 1.2rem;
+  background: #8daca124;
+  backdrop-filter: blur(5px);
   font-weight: bold;
   color: var(--dark-txt-clr);
   border-bottom: 1px solid var(--txt-clr);

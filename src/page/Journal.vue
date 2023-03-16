@@ -28,8 +28,10 @@ const selectedMenu = ref(0);
         </li>
       </ul>
     </aside>
-    <StickyNotes v-if="selectedMenu === 0" />
-    <Book v-else />
+    <div class="content-wrapper">
+      <StickyNotes v-if="selectedMenu === 0" />
+      <Book v-else />
+    </div>
   </div>
 </template>
 <style lang="scss">
