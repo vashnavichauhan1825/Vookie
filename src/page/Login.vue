@@ -9,28 +9,34 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+
 import { useRouter } from "vue-router";
+import { toast } from "vue3-toastify";
 const store = VtunifyStore();
 const router = useRouter();
 const email = ref("");
 const password = ref("");
+const auth = getAuth();
 const register = () => {
-  const auth = getAuth();
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     .then((data) => {
       console.log("successfully registered !");
       console.log(auth.currentUser);
-      router.push("/");
+
+      store.toastSuccess("Succesfully Registered !");
+      router.push("/Signup");
     })
     .catch((error) => {
       console.log(error.code);
-      alert(error.message);
+      store.toastError(error.code);
     });
 };
+
 const loggedIn = ref(false);
 
 const signOutHandler = () => {
   signOut(auth).then(() => {
+    store.toastSuccess("Logged Out !");
     router.push("/");
   });
 };
@@ -39,21 +45,20 @@ const signInWithGoogle = () => {
   signInWithPopup(getAuth(), provider)
     .then((res) => {
       console.log(res.user);
+      store.toastSuccess("Succesfully Logged In !");
       router.push("/");
     })
     .catch((err) => {
       console.log(err);
     });
 };
-let auth;
+
 onMounted(() => {
-  auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
       loggedIn.value = true;
       const uid = user.uid;
       store.setUid(uid);
-      console.log(uid);
     } else {
       loggedIn.value = false;
     }
@@ -61,22 +66,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <!-- <button @click="signOutHandler" v-if="loggedIn">Sign out</button>
-  <h1>Create an Account</h1>
-  <p><input type="email" placeholder="Email" v-model="email" /></p>
-  <p><input type="password" placeholder="password" v-model="password" /></p>
-  <p><button @click="register">Submit</button></p>
-  <p><button @click="signInWithGoogle">Sign In With Google</button></p>
-  <router-link to="/wow"><button>click me</button></router-link> -->
   <div class="main-wrapper">
-    <!-- <div class="signup-img">
-      <img src="../assets/Group.png" />
-      <p>
-        Start typing, no matter what. The water does not flow until the faucet
-        is turned on...
-      </p>
-    </div> -->
-
     <div class="signup-box">
       <h1>Create your Account</h1>
       <p>
@@ -101,7 +91,7 @@ onMounted(() => {
           />
         </div>
         <button @click="register">Sign Up</button>
-        <button class="google-btn" @click="signInWithGoogle">
+        <button @click="signInWithGoogle" class="google-btn">
           sign Up With Google <img src="../assets/google.png" />
         </button>
       </div>

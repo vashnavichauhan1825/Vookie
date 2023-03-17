@@ -6,6 +6,7 @@ import { storeToRefs } from "pinia";
 import { VtunifyStore } from "./store";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "vue-router";
+
 const router = useRouter();
 const store = VtunifyStore();
 
@@ -30,8 +31,10 @@ const upHere = reactive({
 });
 const signOutHandler = () => {
   signOut(auth).then(() => {
+    store.toastSuccess("Logged Out !");
     router.push("/");
   });
+  localStorage.removeItem("uid");
 };
 </script>
 <template>

@@ -3,48 +3,52 @@ import { ref, onMounted } from "vue";
 import { VtunifyStore } from "../store";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "vue-router";
-
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 const store = VtunifyStore();
 const router = useRouter();
 const email = ref("");
 const password = ref("");
-const errMsg = ref();
+const auth = getAuth();
 const register = () => {
-  const auth = getAuth();
   signInWithEmailAndPassword(getAuth(), email.value, password.value)
     .then((data) => {
       console.log("successfully registered sign in!");
       console.log(auth.currentUser);
+      store.toastSuccess("Logged In !");
       router.push("/");
     })
     .catch((error) => {
       console.log(error.code);
       switch (error.code) {
         case "auth/invalid-email":
-          errMsg.value = "Invalid email";
+          store.toastError("Invalid email !");
           break;
         case "auth/user-not-found":
-          errMsg.value = "No account with that email was found";
+          store.toastError("No account with that email was found !");
           break;
         case "auth/wrong-password":
-          errMsg.value = "Incorrect password";
+          store.toastError("Incorrect password");
           break;
         default:
-          errMsg.value = "Email or password was incorrect";
+          store.toastError("Email or password was incorrect");
       }
     });
 };
-const signInWithGoogle = () => {};
-onMounted(() => {});
+const guestLogin = () => {
+  signInWithEmailAndPassword(getAuth(), "guestlogin@gmail.com", "guest1234")
+    .then((data) => {
+      console.log("successfully registered sign in!");
+      console.log(auth.currentUser);
+      store.toastSuccess("Logged In !");
+      router.push("/");
+    })
+    .catch((error) => {
+      store.toastError(error.code);
+    });
+};
 </script>
 <template>
-  <!-- <h1>Create an Account</h1>
-  <p><input type="email" placeholder="Email" v-model="email" /></p>
-  <p><input type="password" placeholder="password" v-model="password" /></p>
-  <p><button @click="register">Submit</button></p>
-  <p><button @click="signInWithGoogle">Sign In With Google</button></p>
-  <p v-if="errMsg">{{ errMsg }}</p>
-  <button @click="store.flagHandler">click me</button> -->
   <div class="main-wrapper">
     <div class="signup-box">
       <h1>Welcome Back !</h1>
@@ -69,9 +73,9 @@ onMounted(() => {});
             v-model="password"
           />
         </div>
-        <p v-if="errMsg">{{ errMsg }}</p>
+
         <button @click="register">sign In</button>
-        <button class="google-btn">
+        <button @click="guestLogin" class="google-btn">
           Login as Guest <img src="../assets/google.png" />
         </button>
       </div>

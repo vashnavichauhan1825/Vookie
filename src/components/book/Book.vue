@@ -3,6 +3,8 @@ import { onMounted, ref } from "vue";
 import { quotesDB } from "../../db/quotes";
 import { getFirestore } from "firebase/firestore";
 import { VtunifyStore } from "../../store";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 // import {  } from "firebase/firestore"
 import { db } from "../../main";
 import {
@@ -17,6 +19,7 @@ import {
 } from "firebase/firestore";
 const store = VtunifyStore();
 const colorRef = ref("");
+const inputKey = ref("");
 const randomQuotes = () => {
   const randomNum = Math.floor(Math.random() * quotesDB.length);
   return quotesDB[randomNum];
@@ -34,17 +37,6 @@ const uidRef = ref(localStorage.getItem("uid"));
 
 const docRef = doc(db, "books", uidRef.value);
 onMounted(async () => {
-  // if (docSnap.exists()) {
-  //   console.log("Document data:", docSnap.data());
-  //   bookList.value = docSnap.data().bookList;
-  // } else {
-  //   // doc.data() will be undefined in this case
-  //   console.log("No such document!");
-  //   await setDoc(fsRef, {
-  //     bookList: bookList.value,
-  //   });
-  // }
-
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
     if (docSnap.data().bookList) {
@@ -110,6 +102,12 @@ const removeItemHandler = async (i) => {
       <h1>{{ quote.quoteText }}</h1>
     </div>
     <div class="book-add-cont">
+      <input
+        class="input-search"
+        type="text"
+        v-model="inputKey"
+        @input="searchHandler"
+      />
       <p class="book-h">Add your Book ;)</p>
       <div class="input-box">
         <input class="input-name" v-model="bookname" />
@@ -130,7 +128,9 @@ const removeItemHandler = async (i) => {
           :style="{ 'background-color': book.color, transform: book.rotate }"
         >
           <div class="book-tag">
-            <small>{{ book.book }}</small>
+            <router-link :to="`/Book/${book.book}`">
+              <small>{{ book.book }}</small>
+            </router-link>
             <img
               class="bin"
               @click="removeItemHandler(i)"

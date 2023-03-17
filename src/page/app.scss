@@ -6,13 +6,18 @@ body {
   --bg-clr: #d6925e;
   --tag-clr: rgb(243, 201, 129);
   --dark-txt-clr: #874e22;
+  --brown-clr: #43281c;
+  --toastify-color-light: #f3f5b0;
   background-color: var(--sec-clr);
   font-family: "Gopher Display";
   font-family: "Catamaran", sans-serif;
+
   margin: 0;
   height: 100%;
 }
-
+.Toastify__toast-body {
+  height: 30px;
+}
 .flex-row {
   display: flex;
   padding: 0rem 2rem;
@@ -23,7 +28,7 @@ body {
     font-size: 8rem;
     text-align: center;
     margin: 0;
-    color: var(--primary-clr);
+    color: var(--brown-clr);
 
     font-weight: 900;
 
@@ -45,7 +50,7 @@ body {
     cursor: pointer;
     text-align: center;
     font-weight: 500;
-    color: var(--bg-clr);
+    color: var(--primary-clr);
   }
   .btn-connect {
     bottom: 30%;

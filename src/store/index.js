@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
-
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 export const VtunifyStore = defineStore("VtunifyId", {
   state: () => ({
     flag: true,
@@ -8,6 +9,22 @@ export const VtunifyStore = defineStore("VtunifyId", {
     trackList: [],
   }),
   actions: {
+    toastSuccess(msg) {
+      return toast.success(msg, {
+        autoClose: 1000,
+      });
+    },
+    toastError(msg) {
+      return toast.error(msg, {
+        autoClose: 1000,
+      });
+    },
+    toastInfo(msg) {
+      return toast.info(msg, {
+        autoClose: 1000,
+      });
+    },
+
     setUid(uid) {
       this.uid = uid;
       localStorage.setItem("uid", uid);
