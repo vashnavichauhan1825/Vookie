@@ -24,13 +24,52 @@ const randomQuotes = () => {
   const randomNum = Math.floor(Math.random() * quotesDB.length);
   return quotesDB[randomNum];
 };
-console.log(store.uid);
+
 const quote = randomQuotes();
 const bookname = ref("");
 const bookList = ref([
-  { book: "Think and Grow Rich", color: "pink", rotate: "rotate(0deg)" },
-  { book: "Atomic Habits", color: "wheat", rotate: "rotate(-2deg)" },
-  { book: "deep work", color: "yellow", rotate: "rotate(-1deg)" },
+  {
+    book: "Think and Grow Rich",
+    color: "pink",
+    rotate: "rotate(0deg)",
+    bookCover: "happy",
+    genre: "Self-help",
+    author: "Napolian hill",
+    startDate: "2023, 0, 2",
+    endDate: "2023, 0, 10",
+    ratings: 5,
+    Thoughts: ["less but better", "your mind"],
+    learnings: "hai apna dil toh awara",
+    notes: "ftydytdtydtydtdtttttttttttthhhhhhhhhhhhhhhhhhhhhhhhhh",
+  },
+  {
+    book: "Atomic Habits",
+    color: "wheat",
+    rotate: "rotate(-2deg)",
+    genre: "Self-help",
+    bookCover: "happy",
+    author: "Napolian hill",
+    startDate: "2023, 0, 3",
+    endDate: "2023, 0, 10",
+    ratings: 5,
+    Thoughts: ["less but better", "your mind"],
+    learnings: "hai apna dil toh awara",
+    notes: "ftydytdtydtydtdtttttttttttthhhhhhhhhhhhhhhhhhhhhhhhhh",
+  },
+  {
+    book: "deep work",
+    color: "yellow",
+    rotate: "rotate(-1deg)",
+    bookCover: "happy",
+    startDate: "2023, 0, 6",
+    endDate: "2023, 0, 10",
+    genre: "Self-help",
+    author: "Napolian hill",
+    ratings: 5,
+    Thoughts: ["less but better", "your mind"],
+    learnings: "hai apna dil toh awara",
+    notes: "ftydytdtydtydtdtttttttttttthhhhhhhhhhhhhhhhhhhhhhhhhh",
+  },
 ]);
 let listArr = [];
 const uidRef = ref(localStorage.getItem("uid"));
@@ -40,6 +79,7 @@ onMounted(async () => {
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
     if (docSnap.data().bookList) {
+      console.log(docSnap.data().bookList);
       bookList.value = docSnap.data().bookList;
     } else {
       await updateDoc(docRef, {
@@ -47,43 +87,36 @@ onMounted(async () => {
       });
     }
   } else {
-    // doc.data() will be undefined in this case
     console.log("No such document!");
     await setDoc(docRef, {});
     await updateDoc(docRef, {
       bookList: bookList.value,
     });
   }
-  // const querySnapshot = await getDocs(collection(db, "books"));
-  // querySnapshot.forEach((doc) => {
-  //   // doc.data() is never undefined for query doc snapshots
-  //   console.log(doc.id, " => jjjjj", doc.data().bookList);
-  //   listArr = doc.data().bookList;
-  //   bookList.value = doc.data().bookList;
-  //   console.log(listArr);
-  // });
+  store.setBookList(bookList.value);
 });
 const addBookHandler = async () => {
-  //   const bookRef = doc(db, "books", store.uid);
-  //   setDoc(bookRef, { capital: true }, { merge: true });
   bookList.value.push({
     book: bookname.value,
     color: colorRef.value,
     rotate: `rotate(-${Math.floor(Math.random() * (3 - 0 + 1) + 0)}deg)`,
+    details: [],
+    bookCover: "",
+    startDate: "-",
+    endDate: "-",
+    genre: "",
+    author: "",
+    ratings: -1,
+    Thoughts: [],
+    learnings: "",
+    notes: "",
   });
   await updateDoc(docRef, {
     bookList: bookList.value,
   });
+  store.setBookList(bookList.value);
 
-  //   await setDoc(doc(db, "books", store.uid), {
-  //     booksList: [
-  //       { book: "Think and Grow Rich", color: "pink", rotate: "rotate(0deg)" },
-  //       { book: "Atomic Habits", color: "wheat", rotate: "rotate(-2deg)" },
-  //     ],
-  //     // book: bookname.value,
-  //     // color: colorRef.value,
-  //     // rotate: `rotate(-${Math.floor(Math.random() * (3 - 0 + 1) + 0)}deg)`,
-  //   });
+  store.toastSuccess("Book added on shelf !");
   bookname.value = " ";
 };
 const colorHandler = (e) => {
@@ -94,6 +127,10 @@ const removeItemHandler = async (i) => {
   await updateDoc(docRef, {
     bookList: bookList.value,
   });
+  store.toastSuccess("Book removed from shelf !");
+};
+const bookSetHandler = (book) => {
+  localStorage.setItem("book", book);
 };
 </script>
 <template>
@@ -102,12 +139,6 @@ const removeItemHandler = async (i) => {
       <h1>{{ quote.quoteText }}</h1>
     </div>
     <div class="book-add-cont">
-      <input
-        class="input-search"
-        type="text"
-        v-model="inputKey"
-        @input="searchHandler"
-      />
       <p class="book-h">Add your Book ;)</p>
       <div class="input-box">
         <input class="input-name" v-model="bookname" />
@@ -129,7 +160,7 @@ const removeItemHandler = async (i) => {
         >
           <div class="book-tag">
             <router-link :to="`/Book/${book.book}`">
-              <small>{{ book.book }}</small>
+              <small @click="bookSetHandler(book.book)">{{ book.book }}</small>
             </router-link>
             <img
               class="bin"
@@ -140,6 +171,9 @@ const removeItemHandler = async (i) => {
         </div>
       </div>
     </div>
+  </div>
+  <div class="journal-box">
+    <h1>write Book Journal !</h1>
   </div>
 </template>
 <style lang="scss">

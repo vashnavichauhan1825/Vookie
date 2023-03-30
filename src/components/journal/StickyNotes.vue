@@ -11,6 +11,8 @@ import {
   arrayRemove,
 } from "firebase/firestore";
 import { db } from "../../main";
+import { VtunifyStore } from "../../store";
+const store = VtunifyStore();
 const colorRef = ref("");
 const notesRef = ref("");
 const limitVal = reactive({ pressed: 0, remaining: 200 });
@@ -79,9 +81,10 @@ const addItemHandler = async () => {
     await updateDoc(docRef, {
       notes: list.value,
     });
+    store.toastSuccess("Sticky added on wall !");
     inputVal.value = " ";
   } else {
-    alert("empty field");
+    store.toastError("Write something on sticky !");
   }
 };
 const removeItemHandler = async (i) => {

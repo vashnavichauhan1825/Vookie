@@ -2,9 +2,18 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import App from "./App.vue";
 import router from "./router";
+import "v-calendar/style.css";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faS } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faPhone);
+library.add(faStar);
+library.add(faS);
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 

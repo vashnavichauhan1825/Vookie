@@ -7,6 +7,7 @@ body {
   --tag-clr: rgb(243, 201, 129);
   --dark-txt-clr: #874e22;
   --brown-clr: #43281c;
+
   --toastify-color-light: #f3f5b0;
   background-color: var(--sec-clr);
   font-family: "Gopher Display";
@@ -14,6 +15,22 @@ body {
 
   margin: 0;
   height: 100%;
+}
+body .vc-blue {
+  --vc-accent-50: #d5ece4;
+  --vc-accent-100: #abe8d3;
+  --vc-accent-200: #6da89380;
+  --vc-accent-300: #87c7b0;
+  --vc-accent-400: #79bda6;
+  --vc-accent-500: #6da893;
+  --vc-accent-600: #578e7a;
+  --vc-accent-700: #528976;
+  --vc-accent-800: #487666;
+  --vc-accent-900: #2d5447;
+}
+body .book-journal-wrapper svg {
+  width: 2rem;
+  height: 2rem;
 }
 .Toastify__toast-body {
   height: 30px;

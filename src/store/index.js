@@ -6,9 +6,17 @@ export const VtunifyStore = defineStore("VtunifyId", {
     flag: true,
     token: null,
     uid: null,
+    selectedBook: "",
+    bookList: [],
     trackList: [],
   }),
   actions: {
+    setBookList(list) {
+      this.bookList = list;
+    },
+    selectBookHandler(book) {
+      this.selectedBook = book;
+    },
     toastSuccess(msg) {
       return toast.success(msg, {
         autoClose: 1000,
