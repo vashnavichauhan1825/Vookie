@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed, reactive } from "vue";
 import { setupCalendar, Calendar, DatePicker } from "v-calendar";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
@@ -16,6 +16,7 @@ import { VtunifyStore } from "../../../store";
 import { db } from "../../../main";
 const detailsList = ref("");
 const store = VtunifyStore();
+const datepickRef = ref("");
 const rateRef = ref("");
 const urlRef = ref("");
 const index = ref("");
@@ -25,16 +26,61 @@ const bookRef = ref(localStorage.getItem("book"));
 const rating = [8, 6, 4, 2, 0];
 const bookList = ref("");
 let date = new Date();
-const range = ref({
-  start: new Date(),
-  end: date.setDate(date.getDate() + 7),
+
+const days = ref([]);
+// const attri = [
+//   {
+//     highlight: {
+//       start: { fillMode: "outline" },
+//       base: { fillMode: "light" },
+//       end: { fillMode: "outline" },
+//     },
+//     dates: { start: new Date(2023, 0, 14), end: new Date(2023, 0, 18) },
+//   },
+// ];
+const startD = computed(() => {
+  console.log("svg");
+  if (detailsList.value.startDate !== "-") {
+    return new Date(detailsList.value.startDate);
+  } else {
+    return 0;
+  }
 });
+const endD = computed(() => {
+  console.log("svg");
+  if (detailsList.value.endDate !== "-") {
+    return new Date(detailsList.value.endDate);
+  } else {
+    return 0;
+  }
+});
+
+const attrs = computed(() => {
+  return [
+    {
+      highlight: {
+        start: { fillMode: "outline" },
+        base: { fillMode: "light" },
+        end: { fillMode: "outline" },
+      },
+      dates: { start: startD.value, end: endD.value },
+    },
+  ];
+});
+// const attrs = ref([
+//   {
+//     highlight: {
+//       start: { fillMode: "outline" },
+//       base: { fillMode: "light" },
+//       end: { fillMode: "outline" },
+//     },
+//     dates: { start: new Date(2023, 3, 14), end: new Date(2023, 3, 18) },
+//   },
+// ]);
 onMounted(async () => {
-  console.log(bookList.value);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
     if (docSnap.data().bookList) {
-      console.log(docSnap.data().bookList);
       bookList.value = docSnap.data().bookList;
       detailsList.value = bookList.value.filter(
         (i) => i.book === bookRef.value
@@ -49,16 +95,20 @@ onMounted(async () => {
       rateRef.value.childNodes[rating[i]].checked = false;
     }
   }
-  console.log(detailsList.value);
+
   if (
     detailsList.value.startDate !== "-" &&
-    detailsList.value.startDate !== "-"
+    detailsList.value.endDate !== "-"
   ) {
-    range.value.start = detailsList.value.startDate;
-    range.value.end = detailsList.value.endDate;
+    console.log("mai chahu tujhko");
+    console.log(attrs.value[0].dates);
+    console.log(startD.value);
   }
 });
 const bookauthorHandler = async (e) => {
+  // datepickRef.value.inputValue.start = "11/03/2023";
+  // console.log(datepickRef.value.inputValue.start);
+  console.log(datepickRef.value.calendarRef.attributeContext.records);
   bookList.value[index.value].author = e.target.value;
   await updateDoc(docRef, {
     bookList: bookList.value,
@@ -86,9 +136,6 @@ const ReturnDate = (date) => {
   } else return "no";
 };
 const ratingHandler = async (val) => {
-  console.log(val);
-
-  console.log(rateRef.value.childNodes);
   rateRef.value.childNodes[rating[val]].checked = "true";
   bookList.value[index.value].ratings = val;
   await updateDoc(docRef, {
@@ -105,18 +152,17 @@ const addListHandler = async (e) => {
     });
   }
 };
-const onDateRangeChange = async () => {
-  console.log(bookList.value[index.value].startDate);
-  bookList.value[index.value].startDate = range.value.start;
-  bookList.value[index.value].endDate = range.value.end;
-  console.log(bookList.value);
+const onDateRangeChange = async (dragVal) => {
+  bookList.value[index.value].startDate = dragVal.start.getTime();
+  bookList.value[index.value].endDate = dragVal.end.getTime();
+  console.log(attrs.value.dates);
   await updateDoc(docRef, {
     bookList: bookList.value,
   });
 };
 const removeFromList = async (i) => {
   bookList.value[index.value].Thoughts.splice(i, 1);
-  console.log(bookList.value[index.value].Thoughts);
+
   await updateDoc(docRef, {
     bookList: bookList.value,
   });
@@ -206,13 +252,13 @@ const bookCoverHandler = async (e) => {
               <span
                 ><h2>Start Date</h2>
                 <h1>
-                  {{ ReturnDate(range.start) }}
+                  {{ startD }}
                 </h1></span
               >
               <span
                 ><h2>End Date</h2>
                 <h1>
-                  {{ ReturnDate(range.end) }}
+                  {{ endD }}
                 </h1></span
               >
             </div>
@@ -222,8 +268,9 @@ const bookCoverHandler = async (e) => {
           <DatePicker
             transparent
             borderless
-            v-model.range="range"
-            mode="range"
+            :attributes="attrs"
+            is-range
+            ref="datepickRef"
             @drag="onDateRangeChange"
           />
           <img src="../../../assets/leaf.png" />
