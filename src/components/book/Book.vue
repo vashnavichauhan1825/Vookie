@@ -95,29 +95,52 @@ onMounted(async () => {
   }
   store.setBookList(bookList.value);
 });
-const addBookHandler = async () => {
-  bookList.value.push({
-    book: bookname.value,
-    color: colorRef.value,
-    rotate: `rotate(-${Math.floor(Math.random() * (3 - 0 + 1) + 0)}deg)`,
-    details: [],
-    bookCover: "",
-    startDate: "-",
-    endDate: "-",
-    genre: "",
-    author: "",
-    ratings: -1,
-    Thoughts: [],
-    learnings: "",
-    notes: "",
-  });
-  await updateDoc(docRef, {
-    bookList: bookList.value,
-  });
-  store.setBookList(bookList.value);
+const kuchBhi = (abc) => {
+  let arr = [];
+  let val = abc.toUpperCase().split("");
+  console.log(abc.toUpperCase().split(""));
 
-  store.toastSuccess("Book added on shelf !");
-  bookname.value = " ";
+  for (let i = 0; i <= 3; i++) {
+    arr.push(val[i] + val[1] + val[2] + val[3]);
+    var temp = val[1];
+    val[1] = val[2];
+    val[2] = temp;
+    arr.push(val[i] + val[1] + val[2] + val[3]);
+  }
+  console.log(arr);
+};
+kuchBhi("abcd");
+const addBookHandler = async () => {
+  if (bookname.value !== "") {
+    if (colorRef.value.length > 0) {
+      bookList.value.push({
+        book: bookname.value,
+        color: colorRef.value,
+        rotate: `rotate(-${Math.floor(Math.random() * (3 - 0 + 1) + 0)}deg)`,
+        details: [],
+        bookCover: "",
+        startDate: "-",
+        endDate: "-",
+        genre: "",
+        author: "",
+        ratings: -1,
+        Thoughts: [],
+        learnings: "",
+        notes: "",
+      });
+      await updateDoc(docRef, {
+        bookList: bookList.value,
+      });
+      store.setBookList(bookList.value);
+
+      store.toastSuccess("Book added on shelf !");
+      bookname.value = "";
+    } else {
+      store.toastError("select color for bookcover !");
+    }
+  } else {
+    store.toastError("Add Name in your book !");
+  }
 };
 const colorHandler = (e) => {
   colorRef.value = e.target.value;
@@ -173,7 +196,15 @@ const bookSetHandler = (book) => {
     </div>
   </div>
   <div class="journal-box">
-    <h1>write Book Journal !</h1>
+    <h1 class="line"><i>Your virtual journal , anytime ,anywhere !</i></h1>
+
+    <div class="box">
+      <p>
+        Welcome to Vookie, your virtual bookshelf and journal where you can
+        organize, track and explore your reading journey. Click on book name to
+        write journal of your book !
+      </p>
+    </div>
   </div>
 </template>
 <style lang="scss">

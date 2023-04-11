@@ -65,10 +65,10 @@ const nextHandler = () => {
   <div class="flex-row">
     <div class="heading-cont">
       <h1 class="ml3">Vookie</h1>
-      <p>Everyone has a chapter they don't read out loud...</p>
+      <p>Your personal bookshelf on the web ...</p>
       <router-link to="/Signup">
         <div @click="connectHandler" class="relative connect-cont">
-          <h2 class="ab btn-connect">connect</h2>
+          <h2 class="ab btn-connect">Explore</h2>
           <svg
             viewBox="0 0 185 109"
             fill="none"
@@ -95,11 +95,27 @@ const nextHandler = () => {
     </div>
 
     <div class="blob-cont">
-      <img
+      <svg
         ref="imgRef"
-        class="full-sx"
-        src="../assets/vecteezy_organic-blob-shapes-hand-drawn-illustration_9668657_364.png"
-      />
+        viewBox="0 0 655 541"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M249.045 121.682C317.545 118.521 364.482 173.205 416.037 211.386C473.519 253.955 557.249 287.787 560.39 352.258C563.565 417.425 524.166 490.177 458.814 525.029C405.515 553.453 311.985 515.067 249.045 518.298C178.152 521.938 99.2355 562.941 44.239 525.029C-11.5612 486.563 -2.8965 412.325 8.17888 352.258C17.5132 301.633 59.2211 264.437 99.3747 225.999C143.854 183.419 181.869 124.782 249.045 121.682Z"
+          fill="#C5DF94"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M298.141 431.062C245.658 406.755 168.228 351.194 145.38 302.177C119.905 247.523 111.035 182.522 135.156 132.46C159.538 81.8566 240.343 69.8754 303.484 68.948C354.98 68.1917 381.377 137.164 429.735 159.25C484.202 184.126 583.92 171.122 609.45 221.278C635.354 272.167 606.384 332.463 573.448 373.648C545.69 408.359 500.225 425.989 454.441 439.455C403.724 454.372 349.609 454.898 298.141 431.062Z"
+          stroke="#90A06E"
+          stroke-width="7"
+        />
+      </svg>
+
       <img
         ref="blobRef"
         class="music-img"

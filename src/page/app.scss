@@ -38,11 +38,11 @@ body .book-journal-wrapper svg {
 .flex-row {
   display: flex;
   padding: 0rem 2rem;
-  padding-top: 15vh;
+  overflow: hidden;
   justify-content: space-between;
 
   h1 {
-    font-size: 8rem;
+    font-size: 4rem;
     text-align: center;
     margin: 0;
     color: var(--brown-clr);
@@ -110,8 +110,16 @@ body .book-journal-wrapper svg {
 }
 
 .blob-cont {
-  width: 60%;
+  width: 45%;
+  padding-right: 6rem;
+  object-fit: contain;
+  padding-bottom: 2rem;
   height: 30%;
+  svg {
+    width: 100%;
+    object-fit: contain;
+    height: 100%;
+  }
 }
 
 .full-sx {

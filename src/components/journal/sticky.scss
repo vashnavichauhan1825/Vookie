@@ -15,8 +15,8 @@ $green-clr: rgb(164, 244, 164);
   background-color: $purple-color;
 }
 .add-btn {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   font-size: 1.2rem;
   font-weight: 500;
@@ -38,7 +38,48 @@ $green-clr: rgb(164, 244, 164);
 .flex-col {
   display: flex;
   padding: 0rem 2rem;
+  align-items: self-start;
   flex-direction: column;
+  .flex-row {
+    padding: 0;
+    align-items: center;
+    gap: 0.75rem;
+    .detail-cont {
+      display: flex;
+      justify-content: space-between;
+      p {
+        font-size: 1rem;
+      }
+    }
+    .color-wrapper {
+      display: flex;
+      gap: 0.625rem;
+
+      .color-box {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1px solid var(--cta-clr);
+      }
+    }
+
+    textarea {
+      resize: none;
+      width: 12.5rem;
+
+      height: 12.5rem;
+      padding: 0.5rem;
+      border: none;
+      color: var(--dark-txt-clr);
+      font-size: 1rem;
+      border-bottom: 2px solid var(--dark-txt-clr);
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
   h1 {
     font-size: 2.5rem;
     color: var(--brown-clr);
@@ -50,48 +91,7 @@ $green-clr: rgb(164, 244, 164);
     text-align: start;
   }
 }
-.flex-row {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  justify-content: start;
-  gap: 20px;
-  .detail-cont {
-    display: flex;
-    justify-content: space-between;
-    p {
-      font-size: 1rem;
-    }
-  }
-  .color-wrapper {
-    display: flex;
-    gap: 10px;
 
-    .color-box {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      cursor: pointer;
-      border: 1px solid var(--cta-clr);
-    }
-  }
-
-  textarea {
-    resize: none;
-    width: 200px;
-
-    height: 200px;
-    padding: 0.5rem;
-    border: none;
-    color: var(--dark-txt-clr);
-    font-size: 1rem;
-    border-bottom: 2px solid var(--dark-txt-clr);
-
-    &:focus {
-      outline: none;
-    }
-  }
-}
 .sticky-empty {
   width: 100%;
   font-size: 1.5rem;
@@ -101,24 +101,25 @@ $green-clr: rgb(164, 244, 164);
   font-weight: bold;
 }
 .sticky-wrapper {
-  padding: 1rem;
   background: url("../../assets/bg2.png");
-  background-size: contain;
+  padding: 1rem;
   .sticky-cont {
     display: flex;
     margin-top: 40px;
-    gap: 20px;
+    gap: 1.25rem;
     flex-wrap: wrap;
     .sticky-note {
       padding: 0.5rem;
       position: relative;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
       color: var(--dark-txt-clr);
       justify-content: space-between;
-      width: 250px;
-      height: 300px;
+      width: 15.625rem;
+      height: 18.75rem;
       overflow-wrap: break-word;
+      overflow-y: scroll;
       .date {
         color: var(--primary-clr);
       }

@@ -20,12 +20,6 @@ const selectedMenu = ref(0);
         >
           Book Journal
         </li>
-        <li
-          @click="selectedMenu = 2"
-          :class="selectedMenu === 2 ? 'bg-tag' : ''"
-        >
-          My Notes
-        </li>
       </ul>
     </aside>
     <div class="content-wrapper">

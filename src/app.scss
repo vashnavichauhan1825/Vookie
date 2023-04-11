@@ -7,10 +7,9 @@
 nav {
   display: flex;
   justify-content: center;
-  position: fixed;
-  width: 100%;
+
   padding: 1rem 2rem 0rem 2rem;
-  gap: 40px;
+  gap: 2.5rem;
   min-height: 10vh;
   z-index: 1;
   font-size: 1.2rem;
@@ -23,17 +22,17 @@ nav {
   p {
     cursor: pointer;
     display: flex;
-    min-width: 80px;
+    min-width: 5rem;
     flex-direction: column;
     margin: 0;
-    min-height: 50px;
+    min-height: 3.125rem;
     &:hover .path-nav {
       stroke-dasharray: 400;
       stroke-dashoffset: 0;
       animation: dash 1s linear;
     }
     .signOut-svg {
-      margin-top: -23px;
+      margin-top: -1.4375rem;
     }
     @keyframes dash {
       from {
@@ -44,13 +43,18 @@ nav {
       }
     }
     svg {
-      width: 60px;
-      margin-top: -10px;
-      height: 20px;
+      width: 3.75rem;
+      margin-top: -0.625rem;
+      height: 1.25rem;
     }
   }
 }
 a {
   text-decoration: none;
   color: inherit;
+}
+@media screen and (max-width: 1500px) {
+  html {
+    font-size: 80%;
+  }
 }

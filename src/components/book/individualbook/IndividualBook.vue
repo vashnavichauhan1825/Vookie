@@ -12,8 +12,10 @@ import {
   arrayUnion,
   arrayRemove,
 } from "firebase/firestore";
+import { uploadBytes } from "firebase/storage";
+
 import { VtunifyStore } from "../../../store";
-import { db } from "../../../main";
+import { db, storageRef, storageApp } from "../../../main";
 const detailsList = ref("");
 const store = VtunifyStore();
 const datepickRef = ref("");
@@ -167,13 +169,34 @@ const removeFromList = async (i) => {
     bookList: bookList.value,
   });
 };
+const notesHandler = async (e) => {
+  bookList.value[index.value].notes = e.target.value;
+  await updateDoc(docRef, {
+    bookList: bookList.value,
+  });
+};
+const LearningHandler = async (e) => {
+  bookList.value[index.value].learnings = e.target.value;
+  await updateDoc(docRef, {
+    bookList: bookList.value,
+  });
+};
 const bookCoverHandler = async (e) => {
   const file = e.target.files[0];
   urlRef.value = URL.createObjectURL(file);
 
-  bookList.value[index.value].bookCover = urlRef.value;
-  await updateDoc(docRef, {
-    bookList: bookList.value,
+  var Path = "Test/" + e.target.files[0].name;
+  const storageRef_1 = storageRef(storageApp, Path);
+  uploadBytes(storageRef_1, file).then(async (snapshot) => {
+    var ImageUrl =
+      "https://firebasestorage.googleapis.com/v0/b/vookie-fa055.appspot.com/o/" +
+      encodeURIComponent(Path) +
+      "?alt=media";
+    console.log("Uploaded a blob or file!");
+    bookList.value[index.value].bookCover = ImageUrl;
+    await updateDoc(docRef, {
+      bookList: bookList.value,
+    });
   });
   detailsList.value = bookList.value.filter((i) => i.book === bookRef.value)[0];
 };
@@ -216,9 +239,7 @@ const bookCoverHandler = async (e) => {
               </svg>
             </label>
           </div>
-          <h1>
-            {{ detailsList.book }}
-          </h1>
+          <h1>book cover</h1>
         </div>
       </div>
 
@@ -252,13 +273,13 @@ const bookCoverHandler = async (e) => {
               <span
                 ><h2>Start Date</h2>
                 <h1>
-                  {{ startD }}
+                  {{ startD === 0 ? "--/--/--" : startD.toLocaleDateString() }}
                 </h1></span
               >
               <span
                 ><h2>End Date</h2>
                 <h1>
-                  {{ endD }}
+                  {{ endD === 0 ? "--/--/--" : endD.toLocaleDateString() }}
                 </h1></span
               >
             </div>
@@ -281,17 +302,25 @@ const bookCoverHandler = async (e) => {
       <div class="notes-cont">
         <img class="note-img" src="../../../assets/Layer 12.png" />
         <h1>Notes</h1>
-        <textarea :value="detailsList.notes" />
+        <textarea
+          class="scroll"
+          :value="detailsList.notes"
+          @change="notesHandler"
+        />
       </div>
       <div class="learn-cont">
         <img class="learn-img" src="../../../assets/Layer 18.png" />
         <h1>Implement what I Learn !</h1>
-        <textarea :value="detailsList.notes" />
+        <textarea
+          class="scroll"
+          :value="detailsList.learnings"
+          @change="LearningHandler"
+        />
       </div>
       <div class="quote-cont">
         <img class="quote-img" src="../../../assets/Layer 10.png" />
         <h1>Favorite Quotes !</h1>
-        <ul>
+        <ul class="scroll">
           <li
             v-for="(list, i) in detailsList.Thoughts"
             @click="removeFromList(i)"
@@ -299,7 +328,9 @@ const bookCoverHandler = async (e) => {
           >
             {{ list }}
           </li>
-          <li><input type="text" @keypress="addListHandler" /></li>
+          <li>
+            <input class="quote-input" type="text" @keypress="addListHandler" />
+          </li>
         </ul>
       </div>
     </div>

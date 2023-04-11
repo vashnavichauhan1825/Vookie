@@ -6,6 +6,7 @@ import "v-calendar/style.css";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getStorage, ref } from "firebase/storage";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -30,5 +31,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storageRef = ref;
+const storageApp = getStorage(app, "gs://vookie-fa055.appspot.com");
 createApp(App).use(createPinia()).use(router).mount("#app");
-export { db };
+export { db, storageRef, storageApp };
