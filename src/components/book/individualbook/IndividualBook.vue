@@ -269,7 +269,7 @@ const bookCoverHandler = async (e) => {
               <label for="star1" title="text" @click="ratingHandler(0)"></label>
             </div>
             <div class="date-cont">
-              <img src="../../../assets/Layer 6.png" />
+              <img src="../../../assets/Layer6.png" />
               <span
                 ><h2>Start Date</h2>
                 <h1>
@@ -300,7 +300,7 @@ const bookCoverHandler = async (e) => {
     </div>
     <div class="bottom-cont">
       <div class="notes-cont">
-        <img class="note-img" src="../../../assets/Layer 12.png" />
+        <img class="note-img" src="../../../assets/Layer12.png" />
         <h1>Notes</h1>
         <textarea
           class="scroll"
@@ -309,7 +309,7 @@ const bookCoverHandler = async (e) => {
         />
       </div>
       <div class="learn-cont">
-        <img class="learn-img" src="../../../assets/Layer 18.png" />
+        <img class="learn-img" src="../../../assets/Layer18.png" />
         <h1>Implement what I Learn !</h1>
         <textarea
           class="scroll"
@@ -318,7 +318,7 @@ const bookCoverHandler = async (e) => {
         />
       </div>
       <div class="quote-cont">
-        <img class="quote-img" src="../../../assets/Layer 10.png" />
+        <img class="quote-img" src="../../../assets/Layer10.png" />
         <h1>Favorite Quotes !</h1>
         <ul class="scroll">
           <li

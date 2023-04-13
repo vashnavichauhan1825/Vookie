@@ -24,7 +24,7 @@ const randomQuotes = () => {
   const randomNum = Math.floor(Math.random() * quotesDB.length);
   return quotesDB[randomNum];
 };
-
+const bookNameRef = ref("");
 const quote = randomQuotes();
 const bookname = ref("");
 const bookList = ref([
@@ -202,21 +202,7 @@ onMounted(async () => {
   }
   store.setBookList(bookList.value);
 });
-const kuchBhi = (abc) => {
-  let arr = [];
-  let val = abc.toUpperCase().split("");
-  console.log(abc.toUpperCase().split(""));
 
-  for (let i = 0; i <= 3; i++) {
-    arr.push(val[i] + val[1] + val[2] + val[3]);
-    var temp = val[1];
-    val[1] = val[2];
-    val[2] = temp;
-    arr.push(val[i] + val[1] + val[2] + val[3]);
-  }
-  console.log(arr);
-};
-kuchBhi("abcd");
 const addBookHandler = async () => {
   if (bookname.value !== "") {
     if (colorRef.value.length > 0) {
@@ -257,7 +243,7 @@ const bookNameHandler = (e) => {
   if (e.target.value.length < 20) {
     bookname.value = e.target.value;
   } else {
-    store.toastError("word limit over !");
+    bookname.value = bookname.value + "...";
   }
 };
 const removeItemHandler = async (i) => {
@@ -279,12 +265,7 @@ const bookSetHandler = (book) => {
     <div class="book-add-cont">
       <p class="book-h">Add your Book ;)</p>
       <div class="input-box">
-        <input
-          class="input-name"
-          maxlength="20"
-          @input="bookNameHandler"
-          v-model="bookname"
-        />
+        <input class="input-name" @input="bookNameHandler" v-model="bookname" />
         <span
           >choose your book color :
           <input class="input-clr" type="color" @input="colorHandler"
