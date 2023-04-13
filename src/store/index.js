@@ -42,7 +42,6 @@ export const VtunifyStore = defineStore("VtunifyId", {
     },
     setHash(val) {
       this.token = val;
-      console.log(this.token);
     },
     storeData(res) {
       this.trackList = res;

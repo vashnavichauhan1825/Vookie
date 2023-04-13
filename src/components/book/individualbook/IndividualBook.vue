@@ -41,7 +41,6 @@ const days = ref([]);
 //   },
 // ];
 const startD = computed(() => {
-  console.log("svg");
   if (detailsList.value.startDate !== "-") {
     return new Date(detailsList.value.startDate);
   } else {
@@ -49,7 +48,6 @@ const startD = computed(() => {
   }
 });
 const endD = computed(() => {
-  console.log("svg");
   if (detailsList.value.endDate !== "-") {
     return new Date(detailsList.value.endDate);
   } else {
@@ -102,15 +100,9 @@ onMounted(async () => {
     detailsList.value.startDate !== "-" &&
     detailsList.value.endDate !== "-"
   ) {
-    console.log("mai chahu tujhko");
-    console.log(attrs.value[0].dates);
-    console.log(startD.value);
   }
 });
 const bookauthorHandler = async (e) => {
-  // datepickRef.value.inputValue.start = "11/03/2023";
-  // console.log(datepickRef.value.inputValue.start);
-  console.log(datepickRef.value.calendarRef.attributeContext.records);
   bookList.value[index.value].author = e.target.value;
   await updateDoc(docRef, {
     bookList: bookList.value,
@@ -157,7 +149,6 @@ const addListHandler = async (e) => {
 const onDateRangeChange = async (dragVal) => {
   bookList.value[index.value].startDate = dragVal.start.getTime();
   bookList.value[index.value].endDate = dragVal.end.getTime();
-  console.log(attrs.value.dates);
   await updateDoc(docRef, {
     bookList: bookList.value,
   });
@@ -192,7 +183,7 @@ const bookCoverHandler = async (e) => {
       "https://firebasestorage.googleapis.com/v0/b/vookie-fa055.appspot.com/o/" +
       encodeURIComponent(Path) +
       "?alt=media";
-    console.log("Uploaded a blob or file!");
+
     bookList.value[index.value].bookCover = ImageUrl;
     await updateDoc(docRef, {
       bookList: bookList.value,

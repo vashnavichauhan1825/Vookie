@@ -9,7 +9,6 @@ const sideToggleHandler = () => {
   if (flag) {
     asideRef.value.style.transform = "translate(0px)";
     flag = false;
-    console.log(asideRef.value.classList);
   } else {
     asideRef.value.style.transform = "translate(-150px)";
     flag = true;

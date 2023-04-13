@@ -43,7 +43,7 @@ const nextHandler = () => {
   const hash = window.location.hash;
   if (hash) {
     const token = hash.substring(1).split("&")[0].split("=")[1];
-    console.log(token);
+
     const response = axios.get("https://api.spotify.com/v1/me/playlists", {
       headers: {
         Authorization: "Bearer " + token,
@@ -56,7 +56,6 @@ const nextHandler = () => {
     );
 
     store.storeData(arr);
-    console.log("tran", store.trackList);
   }
 };
 </script>

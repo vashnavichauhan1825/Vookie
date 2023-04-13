@@ -177,6 +177,41 @@ Service is the direct path to a meaningful life.
 
 Perhaps the thing I gathered and loved the most about monk life is how they are forever students: observing, questioning, evaluating. Be a student! This information felt so RELEVANT for our lives of overstimulation, immediate reward, and the inevitable, pivotal, wondering about purpose and other existential things. If you can find your place among the uncertain, it’s a lot easier to move forward.`,
   },
+
+  {
+    book: "You are a badass",
+    color: "#fdbbdd",
+    rotate: "rotate(-2deg)",
+    bookCover:
+      "https://firebasestorage.googleapis.com/v0/b/vookie-fa055.appspot.com/o/Test%2Fbadass.jpg?alt=media",
+    startDate: new Date("2023-04-01").getTime(),
+    endDate: new Date("2023-04-14").getTime(),
+    genre: "Self help",
+    author: "Jen sincero",
+    ratings: 4,
+    Thoughts: [
+      "You are responsible for what you say and do. You are not responsible for whether or not people freak out about it",
+
+      "If you’re serious about changing your life, you’ll find a way. If you’re not, you’ll find an excuse",
+      "What other people think about you has nothing to do with you and everything to do with them.",
+    ],
+    learnings: `My three favourite takeaways are;
+
+1. Everyone screws up and you’re not special for doing it.
+2. You don’t have to hit rock bottom to make a change. You can just decide.
+3. If you believe it, it is your truth. Your thoughts and beliefs dictate reality, so if you don’t like your reality, change these.`,
+    notes: `“It’s not that the things and opportunities that we want in life don’t exist yet. It’s that we’re not yet aware of their existence (or the fact that we can really have them).” (p. 38)
+
+“You are a badass. You were one when you came screaming onto this planet and you are one now. The Universe wouldn’t have bothered with you otherwise. You can’t screw up so majorly that your badassery disappears. It is who you are. It’s who you will always be. It’s not up for negotiation.” (p. 50)
+
+“Let’s say your story is that you stink at relationships. You get your freedom. You don’t have to commit and can keep looking for the greener grass on the other side. You don’t have to risk getting hurt by being vulnerable. You get to complain about always being single and get sympathy. You get the whole bed to yourself, never have to compromise, and don’t have to shave unless it’s summer.
+
+We don’t realize it, but we’re making the perks we get from perpetuating our story more important than getting the things we really want because it’s familiar territory, it’s what we’re comfy with and we’re scared to let it go.” (p. 142)
+
+“So often we pretend we’ve made a decision, when what we’ve really done is signed up to try until it gets too uncomfortable.” (p. 192)
+
+“Your faith in The Universe must be stronger than your fear of not getting what you want.” (p. 225)`,
+  },
 ]);
 let listArr = [];
 const uidRef = ref(localStorage.getItem("uid"));
@@ -186,7 +221,6 @@ onMounted(async () => {
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
     if (docSnap.data().bookList) {
-      console.log(docSnap.data().bookList);
       bookList.value = docSnap.data().bookList;
     } else {
       await updateDoc(docRef, {
@@ -194,7 +228,6 @@ onMounted(async () => {
       });
     }
   } else {
-    console.log("No such document!");
     await setDoc(docRef, {});
     await updateDoc(docRef, {
       bookList: bookList.value,
@@ -243,7 +276,7 @@ const bookNameHandler = (e) => {
   if (e.target.value.length < 20) {
     bookname.value = e.target.value;
   } else {
-    bookname.value = bookname.value + "...";
+    store.toastError("word limit over !");
   }
 };
 const removeItemHandler = async (i) => {
@@ -265,7 +298,12 @@ const bookSetHandler = (book) => {
     <div class="book-add-cont">
       <p class="book-h">Add your Book ;)</p>
       <div class="input-box">
-        <input class="input-name" @input="bookNameHandler" v-model="bookname" />
+        <input
+          class="input-name"
+          maxlength="20"
+          @input="bookNameHandler"
+          v-model="bookname"
+        />
         <span
           >choose your book color :
           <input class="input-clr" type="color" @input="colorHandler"

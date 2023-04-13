@@ -19,9 +19,6 @@ const limitVal = reactive({ pressed: 0, remaining: 200 });
 const uidRef = ref(localStorage.getItem("uid"));
 const docRef = doc(db, "books", uidRef.value);
 onMounted(async () => {
-  await updateDoc(docRef, {
-    notes: list.value,
-  });
   const docRef = doc(db, "books", uidRef.value);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -33,8 +30,6 @@ onMounted(async () => {
       });
     }
   } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
     await setDoc(docRef, {});
     await updateDoc(docRef, {
       notes: list.value,

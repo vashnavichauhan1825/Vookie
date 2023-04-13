@@ -20,14 +20,10 @@ const auth = getAuth();
 const register = () => {
   createUserWithEmailAndPassword(getAuth(), email.value, password.value)
     .then((data) => {
-      console.log("successfully registered !");
-      console.log(auth.currentUser);
-
       store.toastSuccess("Succesfully Registered !");
       router.push("/Signup");
     })
     .catch((error) => {
-      console.log(error.code);
       store.toastError(error.code);
     });
 };
@@ -44,7 +40,6 @@ const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((res) => {
-      console.log(res.user);
       store.toastSuccess("Succesfully Logged In !");
       router.push("/");
     })

@@ -12,13 +12,10 @@ const auth = getAuth();
 const register = () => {
   signInWithEmailAndPassword(getAuth(), email.value, password.value)
     .then((data) => {
-      console.log("successfully registered sign in!");
-      console.log(auth.currentUser);
       store.toastSuccess("Logged In !");
       router.push("/");
     })
     .catch((error) => {
-      console.log(error.code);
       switch (error.code) {
         case "auth/invalid-email":
           store.toastError("Invalid email !");
@@ -37,8 +34,6 @@ const register = () => {
 const guestLogin = () => {
   signInWithEmailAndPassword(getAuth(), "guestlogin@gmail.com", "guest1234")
     .then((data) => {
-      console.log("successfully registered sign in!");
-      console.log(auth.currentUser);
       store.toastSuccess("Logged In !");
       router.push("/");
     })
