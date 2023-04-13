@@ -24,7 +24,17 @@ const register = () => {
       router.push("/Signup");
     })
     .catch((error) => {
-      store.toastError(error.code);
+      if (error.code === "auth/invalid-email") {
+        store.toastError("Invalid Email !");
+      } else if (error.code === "auth/user-not-found") {
+        store.toastError("User not found !");
+      } else if (error.code === "auth/missing-email") {
+        store.toastError("Missing email !");
+      } else if (error.code === "auth/weak-password") {
+        store.toastError("Password should be greater than 6 characters !");
+      } else {
+        store.toastError(error.message);
+      }
     });
 };
 

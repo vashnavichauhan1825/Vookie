@@ -97,6 +97,7 @@ const addItemHandler = async () => {
 };
 const removeItemHandler = async (i) => {
   list.value.splice(i, 1);
+  store.toastSuccess("Sticky removed from wall !");
   await updateDoc(docRef, {
     notes: list.value,
   });
@@ -111,7 +112,7 @@ const removeItemHandler = async (i) => {
           <div>
             <textarea
               v-model="inputVal"
-              @input="inputHandler"
+              @keypress="inputHandler"
               maxlength="200"
               :class="colorRef"
             />
