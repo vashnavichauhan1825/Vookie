@@ -135,4 +135,15 @@ a {
       padding: 0px 20px;
     }
   }
+  .home-wrapper {
+    .flex-row {
+      .heading-cont {
+        margin-top: -8rem;
+      }
+
+      p {
+        font-size: 24px;
+      }
+    }
+  }
 }
