@@ -127,7 +127,14 @@ body .book-journal-wrapper svg {
   width: 85%;
   object-fit: contain;
 }
-
+.flex-end {
+  right: 0;
+  position: absolute;
+  margin-right: 20px;
+  a {
+    margin-left: 10px;
+  }
+}
 svg {
   width: 18rem;
   height: 10rem;

@@ -118,6 +118,18 @@ const signOutHandler = () => {
         />
       </svg>
     </p>
+    <div class="flex-end">
+      <a href="https://github.com/vashnavichauhan1825" target="_blank"
+        ><img src="./assets/github-logo.png"
+      /></a>
+      <a href="https://twitter.com/VashnaviChauhan" target="_blank"></a>
+      <img src="./assets/twitter.png" />
+      <a
+        href="https://www.linkedin.com/in/vashnavi-chauhan-b6222514b/"
+        target="_blank"
+        ><img src="./assets/linkedin.png"
+      /></a>
+    </div>
   </nav>
   <div class="home-wrapper">
     <router-view />
