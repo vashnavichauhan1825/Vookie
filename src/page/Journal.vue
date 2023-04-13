@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import StickyNotes from "../components/journal/StickyNotes.vue";
 import Book from "../components/book/Book.vue";
-const selectedMenu = ref(1);
+const selectedMenu = ref(0);
 const asideRef = ref("");
 let flag = true;
 const sideToggleHandler = () => {
