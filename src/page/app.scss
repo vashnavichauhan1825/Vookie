@@ -42,7 +42,7 @@ body .book-journal-wrapper svg {
   justify-content: space-between;
 
   h1 {
-    font-size: 4rem;
+    font-size: 8rem;
     text-align: center;
     margin: 0;
     color: var(--brown-clr);
@@ -131,4 +131,27 @@ body .book-journal-wrapper svg {
 svg {
   width: 18rem;
   height: 10rem;
+}
+
+@media screen and (max-width: 500px) {
+  .Toastify__toast-body {
+    height: 20px;
+  }
+  .Toastify__toast {
+    width: 180px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .Toastify .Toastify__toast-container {
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 44vw;
+  }
+  .Toastify .Toastify__toast-container--top-center,
+  .Toastify__toast-container--top-left,
+  .Toastify__toast-container--top-right {
+    top: 5px;
+    transform: translateX(90%);
+  }
 }

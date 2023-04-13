@@ -30,45 +30,152 @@ const bookname = ref("");
 const bookList = ref([
   {
     book: "Think and Grow Rich",
-    color: "pink",
+    color: "#f3f5b0",
     rotate: "rotate(0deg)",
-    bookCover: "happy",
-    genre: "Self-help",
-    author: "Napolian hill",
-    startDate: "2023, 0, 2",
-    endDate: "2023, 0, 10",
-    ratings: 5,
-    Thoughts: ["less but better", "your mind"],
-    learnings: "hai apna dil toh awara",
-    notes: "ftydytdtydtydtdtttttttttttthhhhhhhhhhhhhhhhhhhhhhhhhh",
+    bookCover:
+      "https://firebasestorage.googleapis.com/v0/b/vookie-fa055.appspot.com/o/Test%2Fthink.jpg?alt=media",
+    genre: "Self help",
+    author: "Napoleon hill",
+    startDate: new Date("2023-02-25").getTime(),
+    endDate: new Date("2023-03-25").getTime(),
+    ratings: 3,
+    Thoughts: [
+      "A quitter never wins - and - a winner never quits",
+      "Dreams are not born of indifference, laziness, or lack of ambition.",
+      "Both poverty and riches are the offspring of thought",
+    ],
+    learnings: `I think I learned a lot!
+For one, I gained a lot of very motivating insights. The author gives the sense that we can achieve anything we set our mind to. Attracting wealth is a state of mind. This gives me confidence (faith) to achieve my monetary goals.
+I learned how to concentrate on my desire and set better priorities. I know about the importance of persistence.`,
+    notes: `most importantly, one needs a burning desire and a definite purpose, concentrate on them and train the unconscious to look for answers because wealth has its origin in ideas.
+There are some things in the book I am not sure on, but the last point makes a lot of sense: The stronger the desire, the more energy I will put into it and the more motivation I will have. I need a definite plan or purpose to start acting, because if I don't act, I am only wishing. I also believe in the power of the unconscious, so getting it in alignment with my purpose seems very reasonable. That massive wealth can be created even with a single idea seems self-evident to me.
+`,
   },
   {
     book: "Atomic Habits",
-    color: "wheat",
+    color: "#eaf3f6",
     rotate: "rotate(-2deg)",
-    genre: "Self-help",
-    bookCover: "happy",
+    genre: "Self help",
+    bookCover:
+      "https://firebasestorage.googleapis.com/v0/b/vookie-fa055.appspot.com/o/Test%2Fatomichabit.jpg?alt=media",
     author: "Napolian hill",
-    startDate: "2023, 0, 3",
-    endDate: "2023, 0, 10",
-    ratings: 5,
-    Thoughts: ["less but better", "your mind"],
-    learnings: "hai apna dil toh awara",
-    notes: "ftydytdtydtydtdtttttttttttthhhhhhhhhhhhhhhhhhhhhhhhhh",
+    startDate: new Date("2023-03-05").getTime(),
+    endDate: new Date("2023-04-10").getTime(),
+    ratings: 4,
+    Thoughts: [
+      "You do not rise to the level of your goals. You fall to the level of your systems",
+      "The best way of building a habit is making it part of your identity.",
+      "Make it easy to start: Habits are the entry point - not the goal",
+      "Make it hard to do the things you want to avoid.",
+    ],
+    learnings: `"Read 30 books" ⇒ "Read before bed every night" ⇒ "Read one page". Reduce a habit into a 2-minute first step.
+- Stick to the plan: "Professionals stick to the schedule, amateurs let life get in the way." Don't be a "fair weather runner" if you want to run a lot.`,
+    notes: `*Identity*
+The three levels of change - the lower the more "fundamental":
+3. Outcomes = Your goals
+2. Processes = Your system
+1. Identity = Who you perceive yourself to be
+
+Make every action is a vote for what kind of person you want to become. Building habits is becoming the version of yourself you want to be. Habits help you to trust yourself.
+- Realize that "You don't _have to_ do anything, you _get to_."
+- Ask "What would a healthy person do?".
+- Ask "What feel like fun to you, but is work to others?"
+
+
+*Engineer it so that:*
+Things you want to achieve vs Things you want to avoid
+Obvious — Invisible
+Attractive —Unattractive
+Easy — Hard
+Satisfying — Satisfying
+For example: if you want to watch less TV - keep it unplugged - only plugin if you can say out loud the name of the show you want to watch.`,
   },
   {
     book: "deep work",
     color: "yellow",
     rotate: "rotate(-1deg)",
-    bookCover: "happy",
-    startDate: "2023, 0, 6",
-    endDate: "2023, 0, 10",
-    genre: "Self-help",
-    author: "Napolian hill",
-    ratings: 5,
-    Thoughts: ["less but better", "your mind"],
-    learnings: "hai apna dil toh awara",
-    notes: "ftydytdtydtydtdtttttttttttthhhhhhhhhhhhhhhhhhhhhhhhhh",
+    bookCover:
+      "https://firebasestorage.googleapis.com/v0/b/vookie-fa055.appspot.com/o/Test%2Fsaurav-thapa-shrestha-lahLtM0Zy8k-unsplash.jpg?alt=media",
+    startDate: new Date("2023-01-12").getTime(),
+    endDate: new Date("2023-02-10").getTime(),
+    genre: "Self help",
+    author: "Cal newport",
+    ratings: 4,
+    Thoughts: [
+      "I'll live the focused life, because it's the best life to live.",
+      "If you don't produce, you won't thrive—no matter how skilled or talented you are.",
+      "Clarity about what matters provides clarity about what does not.",
+      "Who you are, what you think, feel, and do, what you love—is the sum of what you focus on.",
+    ],
+    learnings: `- To learn quickly, you need to study for long periods of time consistently. This is neurologically proven.
+
+- Force yourself to concentrate by locking away digital distractions. To write comprehensive thoughts, put away and limit distractions, interruptions, and constant checking of messages.
+
+-Perform a 'shut down' complete action that signifies the end of your professional work day
+
+-Regularly rest your mind to improve frequently and intensity of deep work (e.g. short walks, water breaks)`,
+    notes: `- Deep work is a skill that can and must be developed to be successful in knowledge work. Leaders in the next generation will have the power to put away distraction and enter into deep work.
+
+- Working creatively with machines is one of the three types of people who will success in the new economy. UX designers are right in line with this thinking. AN added benefit is being able to work remote and control your work environment.
+
+- Knowledge work is not supposed to be shown through producing X amount of widgets. It shouldn't be solely measured by quantity of hours worked or public messages/deliverables sent. Quality is what really matters.
+
+- When telling people that you're busy, they will respect it. Deep work stretches are always understood if they are well defined, and well communicated to those trying to get your attention.`,
+  },
+  {
+    book: "Think Like a Monk",
+    color: "#b1d0ed",
+    rotate: "rotate(0deg)",
+    bookCover:
+      "https://firebasestorage.googleapis.com/v0/b/vookie-fa055.appspot.com/o/Test%2Fmokth.png?alt=media",
+    startDate: new Date("2023-03-12").getTime(),
+    endDate: new Date("2023-04-10").getTime(),
+    genre: "Self help",
+    author: "Jay shetty",
+    ratings: 4,
+    Thoughts: [
+      "It’s a mistake to think that when you read a book, attend a class and implement changes that it will fix everything. The externals will never be perfect, and the goal isn’t perfection. Life is not going to go your way. You have to go your way and take life with you",
+      "Humility comes from accepting where you are without seeing it as a reflection of who you are.",
+      "Meditation doesn’t eliminate distractions, it manages them",
+      "Here’s a life hack: Service is always the answer. Service is the direct path to a meaningful life.",
+    ],
+    learnings: `Some changes I personally made inspired by this book:
+(1) set tougher limits on social media use
+(2) spend more time in silence
+(3) practice paying attention to new aspects of my routine environment in more detail
+(4) listen to kirtan music and added some mantra songs to my Spotify playlist
+(5) I ask myself how I served today
+(6) pay attention to the fine line between confidence and egoism
+(7) remember that I can always serve (no need to wait to have "enough") - but of course, take care of myself too
+There were probably more things :)`,
+    notes: `Before judging others, pause for a moment and ask: am I finding fault in order to distract myself or others from my own insecurities? Am I projecting my own weakness onto them? And even if I’m doing neither of those things, am I any better than the person I’m criticizing?
+I can’t say what the answers to the first two questions will be in every case, but the answer to the third question is always no.
+
+Calm. Balance. Ease. Stillness. Peace.
+Your breath responds to everything.
+
+At any given moment you cannot change the past but you are contributing to the future so you might as well be fully present. Be where you physically are. Location has energy. Time (routine) has memory.
+
+A monk is a traveler but the journey is inward
+— it can take years to discover our dharma (pay attention to when you feel alive)
+— many early achievers feel immense anxiety to maintain a level of performance (late bloomers are great!)
+— every task everywhere is an essential organ
+(there is no hierarchy of dharmas)
+
+4 C’s of relationships
+Care, character, competence, consistency
+Am I a teacher, peer, or student?
+
+Loneliness is the pain of being alone.
+Solitude is the glory of being alone.
+
+Mantra. Say it out loud.
+1. Recognize ego
+2. Acknowledge your value
+3. Live in service
+Service is the direct path to a meaningful life.
+
+Perhaps the thing I gathered and loved the most about monk life is how they are forever students: observing, questioning, evaluating. Be a student! This information felt so RELEVANT for our lives of overstimulation, immediate reward, and the inevitable, pivotal, wondering about purpose and other existential things. If you can find your place among the uncertain, it’s a lot easier to move forward.`,
   },
 ]);
 let listArr = [];
@@ -118,7 +225,8 @@ const addBookHandler = async () => {
         color: colorRef.value,
         rotate: `rotate(-${Math.floor(Math.random() * (3 - 0 + 1) + 0)}deg)`,
         details: [],
-        bookCover: "",
+        bookCover:
+          "https://firebasestorage.googleapis.com/v0/b/vookie-fa055.appspot.com/o/Test%2Fvookie.png?alt=media",
         startDate: "-",
         endDate: "-",
         genre: "",
@@ -145,6 +253,13 @@ const addBookHandler = async () => {
 const colorHandler = (e) => {
   colorRef.value = e.target.value;
 };
+const bookNameHandler = (e) => {
+  if (e.target.value.length < 20) {
+    bookname.value = e.target.value;
+  } else {
+    store.toastError("word limit over !");
+  }
+};
 const removeItemHandler = async (i) => {
   bookList.value.splice(i, 1);
   await updateDoc(docRef, {
@@ -164,7 +279,12 @@ const bookSetHandler = (book) => {
     <div class="book-add-cont">
       <p class="book-h">Add your Book ;)</p>
       <div class="input-box">
-        <input class="input-name" v-model="bookname" />
+        <input
+          class="input-name"
+          maxlength="20"
+          @input="bookNameHandler"
+          v-model="bookname"
+        />
         <span
           >choose your book color :
           <input class="input-clr" type="color" @input="colorHandler"
@@ -182,7 +302,7 @@ const bookSetHandler = (book) => {
           :style="{ 'background-color': book.color, transform: book.rotate }"
         >
           <div class="book-tag">
-            <router-link :to="`/Book/${book.book}`">
+            <router-link :to="`/Journal/${book.book}`">
               <small @click="bookSetHandler(book.book)">{{ book.book }}</small>
             </router-link>
             <img

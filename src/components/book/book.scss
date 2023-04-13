@@ -129,7 +129,7 @@
   width: 100%;
   .line {
     color: var(--brown-clr);
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 ::-webkit-scrollbar {
@@ -159,8 +159,9 @@
   align-items: center;
   color: var(--primary-clr);
   justify-content: center;
-  padding: 0.5rem;
-  width: 25rem;
+  padding: 0.5rem 1rem;
+  max-width: 70%;
+  font-size: 1.5rem;
   height: auto;
   margin-bottom: 1em;
   background-color: #ffffff;

@@ -75,9 +75,6 @@ const guestLogin = () => {
         </div>
 
         <button @click="register">sign In</button>
-        <button @click="guestLogin" class="google-btn">
-          Login as Guest <img src="../assets/google.png" />
-        </button>
       </div>
     </div>
   </div>

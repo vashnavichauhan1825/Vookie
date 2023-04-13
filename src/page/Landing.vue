@@ -29,12 +29,12 @@ onMounted(() => {
   });
   anime({
     targets: blobRef.value,
-    translateX: -350,
+    translateX: "-30%",
     duration: 5000,
   });
   anime({
     targets: imgRef.value,
-    translateX: -50,
+    translateX: "-5%",
     duration: 5000,
     rotate: "-10deg",
   });
@@ -66,7 +66,7 @@ const nextHandler = () => {
     <div class="heading-cont">
       <h1 class="ml3">Vookie</h1>
       <p>Your personal bookshelf on the web ...</p>
-      <router-link to="/Signup">
+      <router-link to="/Journal">
         <div @click="connectHandler" class="relative connect-cont">
           <h2 class="ab btn-connect">Explore</h2>
           <svg
@@ -131,10 +131,8 @@ const nextHandler = () => {
 .music-img {
   position: absolute;
 
-  height: 80vh;
+  height: 40rem;
   right: 1%;
-
-  bottom: 0%;
 }
 .relative {
   position: relative;

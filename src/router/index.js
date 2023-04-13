@@ -28,7 +28,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/Book/:id",
+      path: "/Journal/:id",
       component: () =>
         import("../components/book/individualbook/IndividualBook.vue"),
       meta: {
@@ -55,7 +55,7 @@ router.beforeEach(async (to, from, next) => {
     if (await getCurrentUser()) {
       next();
     } else {
-      next("/Login");
+      next("/SignUp");
     }
   } else if (to.matched.some((record) => record.meta.requiresVisitor)) {
     if (await getCurrentUser()) {

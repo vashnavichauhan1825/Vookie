@@ -1,5 +1,6 @@
 .journal-wrapper {
   display: grid;
+  min-height: 87.5vh;
   grid-template-columns: 20% 80%;
 }
 h1 {
@@ -8,11 +9,17 @@ h1 {
 .content-wrapper {
   // margin-left: 20%;
 }
+
 aside {
   border-right: 1px solid var(--cta-clr);
   background-color: #e9ebd4;
-  min-height: 87vh;
+  height: 91vh;
+  height: 100%;
+  transition: all 0.5s ease-in-out;
   background-image: url("data:image/svg+xml,%3Csvg width='40' height='1' viewBox='0 0 40 1' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v1H0z' fill='%23874e22' fill-opacity='0.06' fill-rule='evenodd'/%3E%3C/svg%3E");
+  img {
+    display: none;
+  }
   ul {
     list-style: none;
     margin: 0;
@@ -39,4 +46,22 @@ aside {
 
 .bg-tag {
   background: var(--tag-clr);
+}
+@media screen and (max-width: 660px) {
+  .journal-wrapper {
+    grid-template-columns: 100%;
+  }
+
+  aside {
+    position: absolute;
+    width: 150px;
+    transform: translateX(-150px);
+    z-index: 1;
+    img {
+      display: block;
+      position: absolute;
+      top: 30%;
+      left: 75px;
+    }
+  }
 }

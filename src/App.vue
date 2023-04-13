@@ -78,7 +78,7 @@ const signOutHandler = () => {
         </svg>
       </p>
     </router-link>
-    <router-link to="/Login">
+    <router-link v-show="!loggedIn" to="/Login">
       <p @mouseover="upHere.login = true" @mouseleave="upHere.login = false">
         Login
         <svg

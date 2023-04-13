@@ -102,10 +102,11 @@ $green-clr: rgb(164, 244, 164);
 }
 .sticky-wrapper {
   background: url("../../assets/bg2.png");
-  padding: 1rem;
+  height: 100%;
+
   .sticky-cont {
     display: flex;
-    margin-top: 40px;
+    margin-top: 2.5rem;
     gap: 1.25rem;
     flex-wrap: wrap;
     .sticky-note {
@@ -134,5 +135,21 @@ $green-clr: rgb(164, 244, 164);
     font-size: 2rem;
     top: 0%;
     right: 2%;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .hero-sticky h1 {
+    font-size: 36px;
+  }
+  .sticky-wrapper .sticky-cont {
+    justify-content: center;
+    padding: 1rem;
+  }
+  .hero-sticky {
+    margin-bottom: 20px;
+  }
+  .flex-row {
+    justify-content: center;
   }
 }

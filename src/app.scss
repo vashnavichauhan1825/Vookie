@@ -3,14 +3,17 @@
 
 //   height: 90vh;
 // }
-
+.home-wrapper {
+  height: 100%;
+  width: 100%;
+}
 nav {
   display: flex;
   justify-content: center;
 
   padding: 1rem 2rem 0rem 2rem;
   gap: 2.5rem;
-  min-height: 10vh;
+  min-height: 3rem;
   z-index: 1;
   font-size: 1.2rem;
   background: #8daca124;
@@ -53,8 +56,71 @@ a {
   text-decoration: none;
   color: inherit;
 }
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 2000px) {
   html {
-    font-size: 80%;
+    font-size: 120%;
+  }
+}
+@media screen and (max-width: 1600px) {
+  html {
+    font-size: 100%;
+  }
+}
+@media screen and (max-width: 1390px) {
+  html {
+    font-size: 85%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 70%;
+  }
+}
+@media screen and (max-width: 960px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media screen and (max-width: 855px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .home-wrapper {
+    .flex-row {
+      flex-wrap: wrap-reverse;
+      .heading-cont {
+        width: 100%;
+        align-items: center;
+        h1 {
+          font-size: 44px;
+        }
+        p {
+          font-size: 32px;
+        }
+      }
+    }
+    .blob-cont {
+      position: relative;
+      width: 100%;
+      padding-right: 0;
+      height: 50vh;
+      svg {
+        height: 40vh;
+        position: absolute;
+      }
+    }
+    .music-img {
+      margin: auto;
+      top: 15%;
+      height: 25vh;
+
+      // top: 15%;
+      // right: 1%;
+      // height: 30vh;
+    }
   }
 }
