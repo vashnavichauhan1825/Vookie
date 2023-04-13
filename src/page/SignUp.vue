@@ -3,7 +3,6 @@ import { ref, onMounted } from "vue";
 import { VtunifyStore } from "../store";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "vue-router";
-import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 const store = VtunifyStore();
 const router = useRouter();

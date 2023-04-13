@@ -19,6 +19,9 @@ const limitVal = reactive({ pressed: 0, remaining: 200 });
 const uidRef = ref(localStorage.getItem("uid"));
 const docRef = doc(db, "books", uidRef.value);
 onMounted(async () => {
+  await updateDoc(docRef, {
+    notes: list.value,
+  });
   const docRef = doc(db, "books", uidRef.value);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
@@ -40,14 +43,24 @@ onMounted(async () => {
 });
 const list = ref([
   {
-    note: "Life is either a daring adventure or nothing at all",
-    date: "May 21",
+    note: "Everyday may not be good but there is something good in every day",
+    date: "8 April 2023",
+    color: "bg-yellow",
+  },
+  {
+    note: "Having a soft heart in a cruel world is courage not weakness 😉",
+    date: "10 December 2022",
     color: "bg-purple",
   },
   {
-    note: "In order to write about life first you must live it.",
-    date: "Nov 18",
-    color: "bg-yellow",
+    note: "You have to do what is right for YOURSELF nobody else is walking in your shoes ...Promise yourself to be so strong that nothing can disturb your peace of mind ❤️",
+    date: "21 February 2023",
+    color: "bg-green",
+  },
+  {
+    note: "chal chaiya chaiya chaiya... chal chaiya chaiya 🤪",
+    date: "21 February 2023",
+    color: "bg-pink",
   },
 ]);
 const monthNames = [
