@@ -126,12 +126,13 @@ a {
 }
 @media screen and (max-width: 480px) {
   html {
-    font-size: 70%;
+    font-size: 60%;
   }
   .journal-box {
     .line {
       text-align: center;
       font-size: 24px;
+      padding: 0px 20px;
     }
   }
 }
