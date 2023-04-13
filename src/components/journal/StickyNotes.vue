@@ -73,7 +73,8 @@ const monthNames = [
   "December",
 ];
 const inputVal = ref("");
-const inputHandler = () => {
+const inputHandler = (e) => {
+  inputVal.value = e.target.value;
   limitVal.pressed = inputVal.value.length;
 };
 
@@ -112,7 +113,7 @@ const removeItemHandler = async (i) => {
           <div>
             <textarea
               v-model="inputVal"
-              @keypress="inputHandler"
+              @input="inputHandler"
               maxlength="200"
               :class="colorRef"
             />
