@@ -107,7 +107,7 @@ a {
       position: relative;
       width: 100%;
       padding-right: 0;
-      height: 50vh;
+      height: 42vh;
       svg {
         height: 40vh;
         position: absolute;
@@ -121,6 +121,17 @@ a {
       // top: 15%;
       // right: 1%;
       // height: 30vh;
+    }
+  }
+}
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 83%;
+  }
+  .journal-box {
+    .line {
+      text-align: center;
+      font-size: 32px;
     }
   }
 }
