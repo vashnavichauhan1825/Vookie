@@ -9,8 +9,21 @@
 }
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 
+  .nav-wrapper {
+    display: flex;
+    gap: 20px;
+  }
+  .flex-end {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    img {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
   padding: 1rem 2rem 0rem 2rem;
   gap: 2.5rem;
   min-height: 3rem;
@@ -125,6 +138,11 @@ a {
   }
 }
 @media screen and (max-width: 480px) {
+  nav {
+    justify-content: center;
+    gap: 10px;
+  }
+
   html {
     font-size: 60%;
   }

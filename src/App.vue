@@ -38,92 +38,97 @@ const signOutHandler = () => {
 </script>
 <template>
   <nav>
-    <router-link to="/">
-      <p @mouseover="upHere.home = true" @mouseleave="upHere.home = false">
-        Home
-        <svg
-          v-show="upHere.home"
-          viewBox="0 0 119 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+    <div class="nav-wrapper">
+      <router-link to="/">
+        <p @mouseover="upHere.home = true" @mouseleave="upHere.home = false">
+          Home
+          <svg
+            v-show="upHere.home"
+            viewBox="0 0 119 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="path-nav"
+              d="M0 2C90.5418 2 115.059 9.68856 116 13.5328H12.5006L105.381 22"
+              stroke="#D6925E"
+              stroke-width="3"
+            />
+          </svg>
+        </p>
+      </router-link>
+      <router-link to="/Journal">
+        <p
+          @mouseover="upHere.journal = true"
+          @mouseleave="upHere.journal = false"
         >
-          <path
-            class="path-nav"
-            d="M0 2C90.5418 2 115.059 9.68856 116 13.5328H12.5006L105.381 22"
-            stroke="#D6925E"
-            stroke-width="3"
-          />
-        </svg>
-      </p>
-    </router-link>
-    <router-link to="/Journal">
+          Journal
+          <svg
+            v-show="upHere.journal"
+            viewBox="0 0 119 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="path-nav"
+              d="M0 2C90.5418 2 115.059 9.68856 116 13.5328H12.5006L105.381 22"
+              stroke="#D6925E"
+              stroke-width="3"
+            />
+          </svg>
+        </p>
+      </router-link>
+      <router-link v-show="!loggedIn" to="/Login">
+        <p @mouseover="upHere.login = true" @mouseleave="upHere.login = false">
+          Login
+          <svg
+            v-show="upHere.login"
+            viewBox="0 0 119 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="path-nav"
+              d="M0 2C90.5418 2 115.059 9.68856 116 13.5328H12.5006L105.381 22"
+              stroke="#D6925E"
+              stroke-width="3"
+            />
+          </svg></p
+      ></router-link>
       <p
-        @mouseover="upHere.journal = true"
-        @mouseleave="upHere.journal = false"
+        @click="signOutHandler"
+        v-if="loggedIn"
+        @mouseover="upHere.signout = true"
+        @mouseleave="upHere.signout = false"
       >
-        Journal
+        Sign Out
+
         <svg
-          v-show="upHere.journal"
-          viewBox="0 0 119 24"
+          class="signOut-svg"
+          v-show="upHere.signout"
+          viewBox="0 0 104 6"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
             class="path-nav"
-            d="M0 2C90.5418 2 115.059 9.68856 116 13.5328H12.5006L105.381 22"
+            d="M2.22266 2.01593C35.6731 2.01593 68.7882 4.2048 102.223 4.2048"
             stroke="#D6925E"
             stroke-width="3"
+            stroke-linecap="round"
           />
         </svg>
       </p>
-    </router-link>
-    <router-link v-show="!loggedIn" to="/Login">
-      <p @mouseover="upHere.login = true" @mouseleave="upHere.login = false">
-        Login
-        <svg
-          v-show="upHere.login"
-          viewBox="0 0 119 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            class="path-nav"
-            d="M0 2C90.5418 2 115.059 9.68856 116 13.5328H12.5006L105.381 22"
-            stroke="#D6925E"
-            stroke-width="3"
-          />
-        </svg></p
-    ></router-link>
-    <p
-      @click="signOutHandler"
-      v-if="loggedIn"
-      @mouseover="upHere.signout = true"
-      @mouseleave="upHere.signout = false"
-    >
-      Sign Out
+    </div>
 
-      <svg
-        class="signOut-svg"
-        v-show="upHere.signout"
-        viewBox="0 0 104 6"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          class="path-nav"
-          d="M2.22266 2.01593C35.6731 2.01593 68.7882 4.2048 102.223 4.2048"
-          stroke="#D6925E"
-          stroke-width="3"
-          stroke-linecap="round"
-        />
-      </svg>
-    </p>
     <div class="flex-end">
       <a href="https://github.com/vashnavichauhan1825" target="_blank"
         ><img src="./assets/github-logo.png"
       /></a>
-      <a href="https://twitter.com/VashnaviChauhan" target="_blank"></a>
-      <img src="./assets/twitter.png" />
+      <a href="https://twitter.com/VashnaviChauhan" target="_blank">
+        <img src="./assets/twitter.png"
+      /></a>
+
       <a
         href="https://www.linkedin.com/in/vashnavi-chauhan-b6222514b/"
         target="_blank"
