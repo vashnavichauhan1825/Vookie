@@ -13,7 +13,7 @@ import {
 import { db } from "../../main";
 import { VtunifyStore } from "../../store";
 const store = VtunifyStore();
-const colorRef = ref("");
+const colorRef = ref("bg-yellow");
 const notesRef = ref("");
 const limitVal = reactive({ pressed: 0, remaining: 200 });
 const uidRef = ref(localStorage.getItem("uid"));
