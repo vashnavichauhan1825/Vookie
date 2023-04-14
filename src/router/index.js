@@ -6,6 +6,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/", component: () => import("../page/Landing.vue") },
+
     {
       path: "/Signup",
       component: () => import("../page/SignUp.vue"),
@@ -34,6 +35,11 @@ const router = createRouter({
       meta: {
         requiresAuth: true,
       },
+    },
+    {
+      path: "/:catchAll(.*)",
+      name: "notFound",
+      component: () => import("../page/ErrorPage.vue"),
     },
   ],
 });
