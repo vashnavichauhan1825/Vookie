@@ -17,6 +17,7 @@
 }
 .error-wrapper p {
   font-size: 24px;
+  padding: 0px 10px;
   color: var(--primary-clr);
 }
 .error-wrapper img {
